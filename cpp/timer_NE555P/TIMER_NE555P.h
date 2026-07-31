@@ -45,7 +45,7 @@ private:
 
 public:
     // Constructor
-    timer_NE555P(Mode mode, float vcc, float r_a, float r_b, float c)
+    TIMER_NE555P(Mode mode, float vcc, float r_a, float r_b, float c)
         :mode(mode), vcc(vcc), r_a(r_a), r_b(r_b), c(c) {
         validate();
         update_thresholds();
