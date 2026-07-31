@@ -1,5 +1,4 @@
 # TIMER_NE555P
-___
 Joseph William Bredon-McFarland III  
 GitHub: josephbredonmcfarland-lang  
 Gmail: josephbredonmcfarland@gmail.com  
@@ -33,7 +32,73 @@ The Sample struct acts like a container for a single time stamped sample of the 
 
 `std::vector<Sample>` is built from these samples and represents the signal over time. This vector may be the output or serve as the input for the following discrete signal generators.  
 ___
-## Class: TIMER_NE555P
+## Class: TIMER_NE555P  
+### Constructor 
+```cpp
+TIMER_NE555P(Mode, mode, float, vcc, float r_a, float r_b, float c)
+```
+#### Parameters
+| Name | Description             |
+|------|-------------------------|
+| mode | `Mode::ASTABLE` or `Mode::MONOSTABLE` |
+| vcc  | Supply Voltage from 4.5V to 15V |
+| r_a  | Timing resistor R_a (Ω) |
+| r_b  | Timing resistor R_b (Ω) |
+| c    | Timing Capacitor (F)    |
+
+**Behavior**: Initializes all supplied values, validates vcc and sets the capacitor voltage thresholds.  
+**Throws**: `std::invalid_argument` if `vcc` is out of range.  
+___
+### Setters
+#### Supply Voltage
+```cpp
+void set_vcc(float new_vcc)
+```  
+Updates supply voltage, validates new_vcc, and updates threshold voltages.
+#### Discrete Components
+```cpp
+void set_r_a(float new_r_a)
+```  
+```cpp
+void set_r_b(float new_r_b)
+```  
+```cpp
+void set_c(float new_c)
+```  
+Updates discrete components and revalidates.
+___
+### Calculators 
+Various `const` member functions which calculate the timing parameters. 
+#### Monostable Operation
+```cpp
+float monostable_pulsewidth() const
+```
+Monostable output pulse duration.   
+- Formula: t = 1.1 * R_a * C  
+- `return`: pulse duration (s)
+
+#### Astable Operation
+```cpp
+float astable_high_pulsewidth() const
+```
+```cpp
+float astable_low_pulsewidth() const
+```
+```cpp
+float astable_pulsewidth() const
+```
+```cpp
+float astable_frequency() const
+```
+```cpp
+float driver_duty_cycle() const
+```
+```cpp
+float waveform_duty_cycle() const
+```
+
+
+
 
 
 
