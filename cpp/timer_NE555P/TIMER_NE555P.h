@@ -1,5 +1,5 @@
 // Joseph William Bredon-McFarland III 7/30/2026
-// Github: josephbredonmcfarland-lang
+// GitHub: josephbredonmcfarland-lang
 // 555 Timer Utility
 // Datasheet: https://www.ti.com/lit/ds/symlink/ne555.pdf?ts=1785379495739&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FNE555%252Fpart-details%252FNE555DR
 
