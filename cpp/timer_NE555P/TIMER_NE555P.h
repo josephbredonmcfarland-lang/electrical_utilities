@@ -18,7 +18,7 @@ struct Sample {
     float voltage; // (V)
 };
 
-class timer_NE555P {
+class TIMER_NE555P {
 private:
     // Operation Mode
     Mode mode;
