@@ -37,7 +37,7 @@ private:
         v_thresh_high = (2.0f/3.0f)*vcc;
     }
     // Validate Inputs
-    void validate() {
+    void validate() const {
         if (vcc < 4.5f || vcc > 15.0f) {
             throw std::invalid_argument("Vcc is out of range");
         }
@@ -83,8 +83,27 @@ public:
         return astable_high_pulsewidth()/astable_pulsewidth();
     }
 
-    // Waveform Generator
-    std::vector<Sample> generate__astable_signal(float duration, float sample_rate) const {
+    // Setters
+    void set_vcc(float new_vcc) {
+        vcc = new_vcc;
+        validate();
+        update_thresholds();
+    }
+    void set_r_a(float new_r_a) {
+        r_a = new_r_a;
+        validate();
+    }
+    void set_r_b(float new_r_b) {
+        r_b = new_r_b;
+        validate();
+    }
+    void set_c(float new_c) {
+        c = new_c;
+        validate();
+    }
+
+    // Waveform Generators
+    std::vector<Sample> generate_astable_signal(float duration, float sample_rate) const {
         // Sample Timing
         float t = 0;
         float dt = 1.0f/sample_rate;
@@ -93,12 +112,11 @@ public:
         int num_samples = static_cast<int>(std::round(duration*sample_rate));
         std::vector<Sample> samples;
         samples.reserve(num_samples);
-        // Signal Loop
         // Logic States
         float high = vcc;
         float low = 0;
         float output;
-        // Output Function
+        // Signal Loop
         for (int i = 0; i < num_samples; ++i) {
             // Time Step and Cycled
             t = i*dt;
@@ -115,9 +133,36 @@ public:
         }
         return samples;
     }
+    std::vector<Sample> generate_monostable_signal(const std::vector<Sample>& input_signal) const {
+        // Data
+        std::vector<Sample> samples;
+        samples.reserve(input_signal.size());
+        // Logic States
+        float high = vcc;
+        float low = 0;
+        // Output Flags
+        bool active_pulse = false;
+        float pulse_start_time = 0.0f;
+        for (size_t i = 1; i < input_signal.size(); ++i) {
+            const Sample& prev = input_signal[i-1];
+            const Sample& current = input_signal[i];
 
-
+            bool falling_edge = (prev.voltage > v_thresh_low && current.voltage <= v_thresh_low);
+            if (falling_edge && !active_pulse) {
+                active_pulse = true;
+                pulse_start_time = current.time;
+            }
+            if (active_pulse && (current.time - pulse_start_time) >= monostable_pulsewidth()) {
+                active_pulse = false;
+            }
+            float output = active_pulse ? high : low;
+            samples.push_back(Sample{current.time, output});
+        }
+        return samples;
+    }
 };
+
+
 
 
 #endif //ELECTRICAL_UTILITIES_TIMER_NE555P_H
