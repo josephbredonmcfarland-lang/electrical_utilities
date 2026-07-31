@@ -1,19 +1,18 @@
 # TIMER_NE555P
 Joseph William Bredon-McFarland III  
-GitHub: josephbredonmcfarland-lang  
-Gmail: josephbredonmcfarland@gmail.com  
+GitHub: [josephbredonmcfarland-lang](https://github.com/josephbredonmcfarland-lang)   
 ___
 
 A C++ utility class emulating the NE555 timer IC in monostable or astable mode. The class features calculator, discrete signal generator, and sweep analysis features.  
   
-Datasheet reference via Texas Instruments [xx555 Precision Timers](https://www.ti.com/lit/ds/symlink/ne555.pdf?ts=1785467898823&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FNE555%253Futm_source%253Dsupplyframe%2526utm_medium%253DSEP%2526utm_campaign%253Dnot_alldatasheet%2526DCM%253Dyes)  
+Datasheet reference via Texas Instruments [xx555 Precision Timers](https://www.ti.com/lit/ds/symlink/ne555.pdf)  
 ___
 ## Enums
   
 ### `enum class Mode`
   
 ```cpp
-enum class Mode { ASTABLE, MONOSTABLE }
+enum class Mode { ASTABLE, MONOSTABLE };
 ```
 
 Selects the mode of operation for the instance
@@ -32,10 +31,10 @@ The Sample struct acts like a container for a single time stamped sample of the 
 
 `std::vector<Sample>` is built from these samples and represents the signal over time. This vector may be the output or serve as the input for the following discrete signal generators.  
 ___
-## Class: TIMER_NE555P  
+## Class: `TIMER_NE555P`  
 ### Constructor 
 ```cpp
-TIMER_NE555P(Mode, mode, float, vcc, float r_a, float r_b, float c)
+TIMER_NE555P(Mode mode, float, vcc, float r_a, float r_b, float c)
 ```
 #### Parameters
 | Name | Description             |
