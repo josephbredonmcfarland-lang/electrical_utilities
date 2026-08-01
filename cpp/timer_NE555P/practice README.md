@@ -1,6 +1,5 @@
 # TIMER_NE555P
-Joseph William Bredon-McFarland III  
-GitHub: [josephbredonmcfarland-lang](https://github.com/josephbredonmcfarland-lang)   
+   
 ___
 
 A C++ utility class emulating the NE555 timer IC in monostable or astable mode. The class features calculator, discrete signal generator, and sweep analysis features.  
@@ -34,7 +33,7 @@ ___
 ## Class: `TIMER_NE555P`  
 ### Constructor 
 ```cpp
-TIMER_NE555P(Mode mode, float, vcc, float r_a, float r_b, float c)
+TIMER_NE555P(Mode mode, float vcc, float r_a, float r_b, float c)
 ```
 #### Parameters
 | Name | Description             |
@@ -64,38 +63,49 @@ void set_r_b(float new_r_b)
 ```cpp
 void set_c(float new_c)
 ```  
-Updates discrete components and revalidates.
+Updates discrete components and validates.
 ___
 ### Calculators 
 Various `const` member functions which calculate the timing parameters. 
 #### Monostable Operation
+Pulsewidth value:
 ```cpp
 float monostable_pulsewidth() const
 ```
-Monostable output pulse duration.   
-- Formula: t = 1.1 * R_a * C  
-- `return`: pulse duration (s)
+`return`: t = 1.1 * R_a * C (seconds)
 
 #### Astable Operation
+Pulsewidth values and frequency:
 ```cpp
 float astable_high_pulsewidth() const
 ```
+`return` 
 ```cpp
 float astable_low_pulsewidth() const
 ```
+`return`
 ```cpp
 float astable_pulsewidth() const
 ```
+`return`
 ```cpp
 float astable_frequency() const
 ```
+`return`  
+
+Duty Cycle:
 ```cpp
 float driver_duty_cycle() const
 ```
+`return`
 ```cpp
 float waveform_duty_cycle() const
 ```
-
+`return`
+___
+### Author
+Joseph William Bredon-McFarland III  
+GitHub: [josephbredonmcfarland-lang](https://github.com/josephbredonmcfarland-lang)
 
 
 

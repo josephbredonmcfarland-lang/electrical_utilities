@@ -9,20 +9,91 @@
 #include <vector>
 #include <cmath>
 
-// Mode and Output State
-enum class Mode {ASTABLE, MONOSTABLE};
-
 // Sample Container
 struct Sample {
     float time; // (s)
     float voltage; // (V)
 };
 
-class TIMER_NE555P {
-private:
-    // Operation Mode
-    Mode mode;
-    // Supply Voltage and Discrete Components
+class TIMER_xx555 {
+protected:
+    float vcc, r_a, c, v_thresh_low, v_thresh_high;
+    void update_thresholds() {
+        v_thresh_low = (1.0f/3.0f)*vcc;
+        v_thresh_high = (2.0f/3.0f)*vcc;
+    };
+    void validate() {
+        if (vcc < 5.0f || vcc > 15.0f) {
+            throw std::invalid_argument("Vcc is out of range");
+        }
+    }
+public:
+    TIMER_xx555( float vcc, float r_a, float r_b, float c)
+    : vcc(vcc), r_a(r_a), c(c) {
+        validate();
+        update_thresholds();
+    }
+};
+
+class TIMER_xx555_MONOSTABLE : public TIMER_xx555 {
+public:
+    // Constructor
+    TIMER_xx555_MONOSTABLE( float vcc, float r_a, float c)
+        : TIMER_xx555(vcc, r_a, c) {
+    }
+    // Monostable Operation
+    float monostable_pulsewidth() const {
+        // Output Pulse Duration (s)
+        return 1.1f*r_a*c;
+    }
+
+    // Setters
+    void set_vcc(float new_vcc) {
+        vcc = new_vcc;
+        validate();
+        update_thresholds();
+    }
+    void set_r_a(float new_r_a) {
+        r_a = new_r_a;
+        validate();
+    }
+    void set_c(float new_c) {
+        c = new_c;
+        validate();
+    }
+
+    // Waveform Generators
+    std::vector<Sample> generate_signal(const std::vector<Sample>& input_signal) const {
+        // Data
+        std::vector<Sample> samples;
+        samples.reserve(input_signal.size());
+        // Logic States
+        float high = vcc;
+        float low = 0;
+        // Output Flags
+        bool active_pulse = false;
+        float pulse_start_time = 0.0f;
+        for (size_t i = 1; i < input_signal.size(); ++i) {
+            const Sample& prev = input_signal[i-1];
+            const Sample& current = input_signal[i];
+
+            bool falling_edge = (prev.voltage > v_thresh_low && current.voltage <= v_thresh_low);
+            if (falling_edge && !active_pulse) {
+                active_pulse = true;
+                pulse_start_time = current.time;
+            }
+            if (active_pulse && (current.time - pulse_start_time) >= monostable_pulsewidth()) {
+                active_pulse = false;
+            }
+            float output = active_pulse ? high : low;
+            samples.push_back(Sample{current.time, output});
+        }
+        return samples;
+    }
+};
+
+class TIMER_xx555_ASTABLE {
+// Supply Voltage and Discrete Components
     float vcc;
     float r_a;
     float r_b;
@@ -161,8 +232,6 @@ public:
         return samples;
     }
 };
-
-
 
 
 #endif //ELECTRICAL_UTILITIES_TIMER_NE555P_H
