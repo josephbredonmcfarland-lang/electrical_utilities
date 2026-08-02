@@ -35,7 +35,8 @@ TIMER_xx555(float vcc, float r_a, float c)
 | r_a  | Timing resistor R_a (Ω)         |
 | c    | Timing Capacitor (F)            |
 
-**Behavior**: Initializes all supplied values, validates `vcc`/`r_a`/`c`, and sets the capacitor voltage thresholds.
+**Behavior**: Initializes all supplied values, validates `vcc`/`r_a`/`c`, and sets the capacitor voltage thresholds.  
+
 **Throws**: `std::invalid_argument` if `vcc` is out of range, or if `r_a`/`c` is not positive.
 ___
 ### Setters

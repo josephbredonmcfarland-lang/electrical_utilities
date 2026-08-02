@@ -9,6 +9,8 @@ add_library(electrical_utilities
         cpp/TIMER_xx555/TIMER_xx555.cpp
         cpp/TIMER_xx555/TIMER_xx555.h
         cpp/TIMER_xx555/TIMER_xx555.h
-        cpp/TIMER_xx555/555_Deposit.h)
+        cpp/TIMER_xx555/555_Deposit.h
+        cpp/ResistorSeries/ResistorSeries.cpp
+        cpp/ResistorSeries/ResistorSeries.h)
 
 target_include_directories(electrical_utilities PUBLIC cpp/TIMER_xx555)
