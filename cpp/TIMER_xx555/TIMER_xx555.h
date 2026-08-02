@@ -1,8 +1,8 @@
 // 555 Timer Utility
 // Datasheet: https://www.ti.com/lit/ds/symlink/ne555.pdf?ts=1785379495739&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FNE555%252Fpart-details%252FNE555DR
 
-#ifndef ELECTRICAL_UTILITIES_TIMER_NE555P_H
-#define ELECTRICAL_UTILITIES_TIMER_NE555P_H
+#ifndef ELECTRICAL_UTILITIES_TIMER_xx555_H
+#define ELECTRICAL_UTILITIES_TIMER_xx555_H
 #include <vector>
 #include <string>
 
