@@ -15,7 +15,7 @@ void TIMER_xx555::update_thresholds() {
     v_thresh_low = (1.0f/3.0f)*vcc;
     v_thresh_high = (2.0f/3.0f)*vcc;
 }
-void TIMER_xx555::validate() {
+void TIMER_xx555::validate() const {
     if (vcc < 5.0f || vcc > 15.0f) {
         throw std::invalid_argument("Vcc is out of range 5V-14V");
     }
@@ -38,7 +38,7 @@ void TIMER_xx555::set_c(float new_c) {
     validate();
 }
 // CSV File Export
-void TIMER_xx555::export_to_csv(const std::vector<Sample>& samples, const std::string& filename) const {
+void TIMER_xx555::export_to_csv(const std::vector<Sample>& samples, const std::string& filename){
     // Open Filestream
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -152,8 +152,8 @@ std::vector<Sample> TIMER_xx555_ASTABLE::generate_signal(float duration, float s
         // Signal Loop
         for (int i = 0; i < num_samples; ++i) {
             // Time Step and Cycled
-            t = i*dt;
-            float t_mod = fmod(t, T);
+            t = static_cast<float>(i)*dt;
+            float t_mod = std::fmod(t, T);
             // If t_mod is in HIGH Cycle
             if (t_mod <= pulsewidth_high()) {
                 output = high;

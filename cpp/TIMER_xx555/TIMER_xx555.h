@@ -17,7 +17,7 @@ class TIMER_xx555 {
 protected:
     float vcc, r_a, c, v_thresh_low, v_thresh_high;
     void update_thresholds();
-    void validate();
+    void validate() const;
 public:
     // Constructor
     TIMER_xx555( float vcc, float r_a, float c);
@@ -26,11 +26,11 @@ public:
     void set_r_a(float new_r_a);
     void set_c(float new_c);
     // Export to CSV
-    void export_to_csv(const std::vector<Sample>& samples, const std::string& filename) const;
+    static void export_to_csv(const std::vector<Sample>& samples, const std::string& filename);
 
 };
 
-// Reacts to a signal input; uses a falling edge trigger (v_thresh_low) to trigger pulse
+// Sub Class: Reacts to a signal input; uses a falling edge trigger (v_thresh_low) to trigger pulse
 class TIMER_xx555_MONOSTABLE : public TIMER_xx555 {
 public:
     // Constructor
@@ -41,7 +41,7 @@ public:
     std::vector<Sample> generate_signal(const std::vector<Sample>& input_signal) const;
 };
 
-// Acts as a free running oscillator whose timing is related to its physical components
+// Sub Class: Acts as a free running oscillator whose timing is related to its physical components
 class TIMER_xx555_ASTABLE : public TIMER_xx555 {
 private:
     float r_b;
@@ -63,4 +63,4 @@ public:
     std::vector<Sample> generate_signal(float duration, float sample_rate) const;
 };
 
-#endif //ELECTRICAL_UTILITIES_TIMER_NE555P_H
+#endif //ELECTRICAL_UTILITIES_TIMER_xx555_H
