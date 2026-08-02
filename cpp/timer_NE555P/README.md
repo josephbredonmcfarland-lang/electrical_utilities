@@ -1,4 +1,4 @@
-# timer_NE555P
+# TIMER_xx555
 
 A C++ utility class modeling the NE555 timer IC in astable or monostable configuration. Provides timing calculators, signal generation for use as a modular block in circuit simulations, and (planned) parameter sweep analysis.
 

@@ -1,5 +1,3 @@
-// Joseph William Bredon-McFarland III 7/30/2026
-// GitHub: josephbredonmcfarland-lang
 // 555 Timer Utility
 // Datasheet: https://www.ti.com/lit/ds/symlink/ne555.pdf?ts=1785379495739&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FNE555%252Fpart-details%252FNE555DR
 
@@ -8,6 +6,8 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+#include <fstream>
+#include <string>
 
 // Sample Container
 struct Sample {
@@ -15,6 +15,7 @@ struct Sample {
     float voltage; // (V)
 };
 
+// Base Class 555 Timer
 class TIMER_xx555 {
 protected:
     float vcc, r_a, c, v_thresh_low, v_thresh_high;
@@ -28,25 +29,12 @@ protected:
         }
     }
 public:
-    TIMER_xx555( float vcc, float r_a, float r_b, float c)
+    // Constructor
+    TIMER_xx555( float vcc, float r_a, float c)
     : vcc(vcc), r_a(r_a), c(c) {
         validate();
         update_thresholds();
     }
-};
-
-class TIMER_xx555_MONOSTABLE : public TIMER_xx555 {
-public:
-    // Constructor
-    TIMER_xx555_MONOSTABLE( float vcc, float r_a, float c)
-        : TIMER_xx555(vcc, r_a, c) {
-    }
-    // Monostable Operation
-    float monostable_pulsewidth() const {
-        // Output Pulse Duration (s)
-        return 1.1f*r_a*c;
-    }
-
     // Setters
     void set_vcc(float new_vcc) {
         vcc = new_vcc;
@@ -61,7 +49,32 @@ public:
         c = new_c;
         validate();
     }
+    // Export to CSV
+    void export_to_csv(const std::vector<Sample>& samples, const std::string& filename) const {
+        // Open Filestream
+        std::ofstream file(filename);
+        if (!file.is_open()) {
+            throw std::runtime_error("Could not open file: " + filename);
+        }
+        // Write to CSV
+        file << "time,voltage\n";
+        for (const Sample& s : samples) {
+            file << s.time << "," << s.voltage << "\n";
+        }
+    }
+};
 
+class TIMER_xx555_MONOSTABLE : public TIMER_xx555 {
+public:
+    // Constructor
+    TIMER_xx555_MONOSTABLE( float vcc, float r_a, float c)
+        : TIMER_xx555(vcc, r_a, c) {
+    }
+    // Monostable Operation
+    float monostable_pulsewidth() const {
+        // Output Pulse Duration (s)
+        return 1.1f*r_a*c;
+    }
     // Waveform Generators
     std::vector<Sample> generate_signal(const std::vector<Sample>& input_signal) const {
         // Data
@@ -92,43 +105,19 @@ public:
     }
 };
 
-class TIMER_xx555_ASTABLE {
-// Supply Voltage and Discrete Components
-    float vcc;
-    float r_a;
+class TIMER_xx555_ASTABLE : public TIMER_xx555 {
+private:
     float r_b;
-    float c;
-    // Voltage Threshold (Capacitor Output)
-    float v_thresh_low;
-    float v_thresh_high;
-
-    // Update Thresholds
-    void update_thresholds() {
-        v_thresh_low = (1.0f/3.0f)*vcc;
-        v_thresh_high = (2.0f/3.0f)*vcc;
-    }
-    // Validate Inputs
-    void validate() const {
-        if (vcc < 4.5f || vcc > 15.0f) {
-            throw std::invalid_argument("Vcc is out of range");
-        }
-    }
-
 public:
     // Constructor
-    TIMER_NE555P(Mode mode, float vcc, float r_a, float r_b, float c)
-        :mode(mode), vcc(vcc), r_a(r_a), r_b(r_b), c(c) {
+    TIMER_xx555_ASTABLE( float vcc, float r_a, float r_b, float c)
+        : TIMER_xx555(vcc, r_a, c), r_b(r_b) {}
+    // Setters
+    void set_r_b(float new_r_b) {
+        r_b = new_r_b;
         validate();
-        update_thresholds();
     }
-
-    // Monostable Operation
-    float monostable_pulsewidth() const {
-        // Output Pulse Duration (s)
-        return 1.1f*r_a*c;
-    }
-
-    // Astable Operation
+    // Calculators
     float astable_low_pulsewidth() const {
         // Output Pulse Low (s)
         return 0.693f*r_b*c;
@@ -153,28 +142,8 @@ public:
         // Output Waveform Duty Cycle
         return astable_high_pulsewidth()/astable_pulsewidth();
     }
-
-    // Setters
-    void set_vcc(float new_vcc) {
-        vcc = new_vcc;
-        validate();
-        update_thresholds();
-    }
-    void set_r_a(float new_r_a) {
-        r_a = new_r_a;
-        validate();
-    }
-    void set_r_b(float new_r_b) {
-        r_b = new_r_b;
-        validate();
-    }
-    void set_c(float new_c) {
-        c = new_c;
-        validate();
-    }
-
     // Waveform Generators
-    std::vector<Sample> generate_astable_signal(float duration, float sample_rate) const {
+    std::vector<Sample> generate_signal(float duration, float sample_rate) const {
         // Sample Timing
         float t = 0;
         float dt = 1.0f/sample_rate;
@@ -204,34 +173,6 @@ public:
         }
         return samples;
     }
-    std::vector<Sample> generate_monostable_signal(const std::vector<Sample>& input_signal) const {
-        // Data
-        std::vector<Sample> samples;
-        samples.reserve(input_signal.size());
-        // Logic States
-        float high = vcc;
-        float low = 0;
-        // Output Flags
-        bool active_pulse = false;
-        float pulse_start_time = 0.0f;
-        for (size_t i = 1; i < input_signal.size(); ++i) {
-            const Sample& prev = input_signal[i-1];
-            const Sample& current = input_signal[i];
-
-            bool falling_edge = (prev.voltage > v_thresh_low && current.voltage <= v_thresh_low);
-            if (falling_edge && !active_pulse) {
-                active_pulse = true;
-                pulse_start_time = current.time;
-            }
-            if (active_pulse && (current.time - pulse_start_time) >= monostable_pulsewidth()) {
-                active_pulse = false;
-            }
-            float output = active_pulse ? high : low;
-            samples.push_back(Sample{current.time, output});
-        }
-        return samples;
-    }
 };
-
 
 #endif //ELECTRICAL_UTILITIES_TIMER_NE555P_H
