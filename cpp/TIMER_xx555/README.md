@@ -153,5 +153,5 @@ std::vector<Sample> generate_signal(float duration, float sample_rate) const
 **Throws**: `std::invalid_argument` if `duration` or `sample_rate` is not positive.
 ___
 ### Author
-Joseph William Bredon-McFarland III
+Joseph William Bredon-McFarland III  
 GitHub: [josephbredonmcfarland-lang](https://github.com/josephbredonmcfarland-lang)
