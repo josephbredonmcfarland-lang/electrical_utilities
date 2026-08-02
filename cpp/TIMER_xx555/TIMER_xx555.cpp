@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-// Base Class 555 Timer Constructor
+// Constructor
 TIMER_xx555::TIMER_xx555( float vcc, float r_a, float c)
     : vcc(vcc), r_a(r_a), c(c) {
     validate();
