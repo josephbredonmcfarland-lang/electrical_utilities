@@ -3,10 +3,7 @@
 
 #ifndef ELECTRICAL_UTILITIES_TIMER_NE555P_H
 #define ELECTRICAL_UTILITIES_TIMER_NE555P_H
-#include <stdexcept>
 #include <vector>
-#include <cmath>
-#include <fstream>
 #include <string>
 
 // Sample Container
@@ -39,7 +36,7 @@ public:
     // Constructor
     TIMER_xx555_MONOSTABLE( float vcc, float r_a, float c);
     // Monostable Operation
-    float monostable_pulsewidth() const;
+    float pulsewidth() const;
     // Waveform Generators
     std::vector<Sample> generate_signal(const std::vector<Sample>& input_signal) const;
 };
@@ -56,12 +53,12 @@ public:
     // Setters
     void set_r_b(float new_r_b);
     // Calculators
-    float astable_low_pulsewidth();
-    float astable_high_pulsewidth() const;
-    float astable_pulsewidth() const;
-    float astable_frequency() const;
-    float driver_duty_cycle() const;
-    float waveform_duty_cycle() const;
+    float pulsewidth_low() const;
+    float pulsewidth_high() const;
+    float pulsewidth() const;
+    float frequency() const;
+    float dutycycle_driver() const;
+    float dutycycle_waveform() const;
     // Waveform Generators
     std::vector<Sample> generate_signal(float duration, float sample_rate) const;
 };
