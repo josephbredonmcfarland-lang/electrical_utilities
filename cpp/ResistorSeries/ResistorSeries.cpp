@@ -9,9 +9,9 @@ ResistorSeries::ResistorSeries(ESeries series)
     Validate();
     Update();
 }
-
+// Input Check
 void ResistorSeries::Validate() const {}
-
+// Update values
 void ResistorSeries::Update() {
     switch (series) {
         case ESeries::E6:
@@ -40,16 +40,23 @@ void ResistorSeries::Update() {
             break;
     }
 }
-
+// Getters
+// Calculate Resistor Values
 std::vector<float> ResistorSeries::GetValues() const {
     std::vector<float> values;
     float Rn;
-    // Calculate Resistor Values
     for (int k = 0; k <= 6; k++) {
         for (int n = 0; n < ResistorSeries::N; n++) {
             Rn = std::pow(10.0f, static_cast<float>(k)) * std::pow(10.0f, static_cast<float>(n)/static_cast<float>(ResistorSeries::N));
+
             values.push_back(Rn);
+
         }
     }
     return values;
 }
+// Get Prefix Logic
+std::string ResistorSeries::GetPrefix(int k, float Rn) const {
+
+}
+

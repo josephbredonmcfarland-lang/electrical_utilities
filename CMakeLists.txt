@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.3)
+cmake_minimum_required(VERSION 4.2)
 project(electrical_utilities)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -9,7 +9,6 @@ add_library(electrical_utilities
         cpp/TIMER_xx555/TIMER_xx555.cpp
         cpp/TIMER_xx555/TIMER_xx555.h
         cpp/TIMER_xx555/TIMER_xx555.h
-        cpp/TIMER_xx555/555_Deposit.h
         cpp/ResistorSeries/ResistorSeries.cpp
         cpp/ResistorSeries/ResistorSeries.h)
 

@@ -39,6 +39,9 @@ public:
     void Update();
     // Generate Series();
     std::vector<float> GetValues() const;
+    // Prefix Logic
+    std::string GetPrefix(int k, float Rn) const;
+
 };
 
 #endif //ELECTRICAL_UTILITIES_RESISTORSERIES_H
