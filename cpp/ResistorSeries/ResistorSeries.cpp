@@ -76,7 +76,7 @@ std::vector<ResistorData> ResistorSeries:: Compile() const{
     ResistorData data;
     std::vector<ResistorData> stream;
     std::vector<float> values = GetValues();
-    for (int i = 0; i < values.size(); i++) {
+    for (size_t i = 0; i < values.size(); i++) {
         // Normalize Value
         int exponent = GetExponent(values[i]);
         int groupStart = 3 * (exponent / 3);
@@ -92,7 +92,7 @@ std::vector<ResistorData> ResistorSeries:: Compile() const{
     return stream;
 
 }
-std::string ResistorSeries::Series2String(ESeries s) const {
+std::string ResistorSeries::Series2String(ESeries s) {
     switch (s) {
         case ESeries::E6:   return "E6";
         case ESeries::E12:  return "E12";
@@ -104,7 +104,7 @@ std::string ResistorSeries::Series2String(ESeries s) const {
     return "";
 }
 
-void ResistorSeries::ExportCSV(std::vector<ResistorData> stream, std::string filename) const {
+void ResistorSeries::ExportCSV(std::vector<ResistorData>& stream, const std::string& filename) {
     // Open Filestream
     std::ofstream file(filename);
     if (!file.is_open()) {

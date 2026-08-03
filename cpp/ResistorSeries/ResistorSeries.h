@@ -12,7 +12,7 @@ enum class ESeries {
     E24, // 5%
     E48, // 2%
     E96, // 1%
-    E192 // 0.05%
+    E192 // 0.5%
 };
 
 struct ResistorData {
@@ -43,8 +43,8 @@ public:
     std::string GetPrefix(int exponent) const;
     std::vector<ResistorData> Compile() const;
     int GetExponent(float value) const;
-    std::string Series2String(ESeries s) const;
-    void ExportCSV(std::vector<ResistorData> stream, std::string filename) const;
+    static std::string Series2String(ESeries s);
+    static void ExportCSV(std::vector<ResistorData>& stream, const std::string& filename);
 
 };
 
