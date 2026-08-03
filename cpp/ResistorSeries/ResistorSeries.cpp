@@ -115,4 +115,5 @@ void ResistorSeries::ExportCSV(std::vector<ResistorData> stream, std::string fil
     for (const ResistorData& s : stream) {
         file << Series2String(s.series) << "," << s.value << "," << s.prefix + s.unit << "," << s.tolerance << "\n";
     }
+
 }

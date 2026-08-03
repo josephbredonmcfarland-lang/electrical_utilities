@@ -45,6 +45,7 @@ public:
     int GetExponent(float value) const;
     std::string Series2String(ESeries s) const;
     void ExportCSV(std::vector<ResistorData> stream, std::string filename) const;
+
 };
 
 #endif //ELECTRICAL_UTILITIES_RESISTORSERIES_H
