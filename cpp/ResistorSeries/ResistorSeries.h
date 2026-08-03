@@ -17,7 +17,7 @@ enum class ESeries {
 
 struct ResistorData {
     ESeries series;
-    std::vector<float> values;
+    float value;
     std::string prefix;
     std::string unit = "Ω";
     float tolerance;
@@ -40,8 +40,11 @@ public:
     // Generate Series();
     std::vector<float> GetValues() const;
     // Prefix Logic
-    std::string GetPrefix(int k, float Rn) const;
-
+    std::string GetPrefix(int exponent) const;
+    std::vector<ResistorData> Compile() const;
+    int GetExponent(float value) const;
+    std::string Series2String(ESeries s) const;
+    void ExportCSV(std::vector<ResistorData> stream, std::string filename) const;
 };
 
 #endif //ELECTRICAL_UTILITIES_RESISTORSERIES_H

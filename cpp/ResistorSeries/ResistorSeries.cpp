@@ -2,8 +2,9 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+#include <fstream>
 
-
+// Constructor
 ResistorSeries::ResistorSeries(ESeries series)
     : series(series) {
     Validate();
@@ -48,15 +49,70 @@ std::vector<float> ResistorSeries::GetValues() const {
     for (int k = 0; k <= 6; k++) {
         for (int n = 0; n < ResistorSeries::N; n++) {
             Rn = std::pow(10.0f, static_cast<float>(k)) * std::pow(10.0f, static_cast<float>(n)/static_cast<float>(ResistorSeries::N));
-
             values.push_back(Rn);
-
         }
     }
     return values;
 }
+// Get Exponent
+int ResistorSeries::GetExponent(float value) const {
+    return static_cast<int>(std::floor(std::log10(value)));
+}
 // Get Prefix Logic
-std::string ResistorSeries::GetPrefix(int k, float Rn) const {
+std::string ResistorSeries::GetPrefix(int exponent) const {
 
+    if (exponent < 3) {
+        return "";
+    }
+    else if (exponent <6) {
+        return "k";
+    }
+    else {
+        return "M";
+    }
 }
 
+std::vector<ResistorData> ResistorSeries:: Compile() const{
+    ResistorData data;
+    std::vector<ResistorData> stream;
+    std::vector<float> values = GetValues();
+    for (int i = 0; i < values.size(); i++) {
+        // Normalize Value
+        int exponent = GetExponent(values[i]);
+        int groupStart = 3 * (exponent / 3);
+        float divisor = std::pow(10.0f, static_cast<float>(groupStart));
+        // Compile Resistor Data
+        data.series = ResistorSeries::series;
+        data.value = values[i] / divisor;
+        data.prefix = GetPrefix(exponent);
+        data.unit = "Ω";
+        data.tolerance = ResistorSeries::tolerance;
+        stream.push_back(data);
+    }
+    return stream;
+
+}
+std::string Series2String(ESeries s) {
+    switch (s) {
+        case ESeries::E6:   return "E6";
+        case ESeries::E12:  return "E12";
+        case ESeries::E24:  return "E24";
+        case ESeries::E48:  return "E48";
+        case ESeries::E96:  return "E96";
+        case ESeries::E192: return "E192";
+    }
+    return "";
+}
+
+void ExportCSV(std::vector<ResistorData> stream, std::string filename) {
+    // Open Filestream
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Could not open file: " + filename);
+    }
+    // Write to CSV
+    file << "Series, Value, Unit, Tolerance\n";
+    for (const ResistorData& s : stream) {
+        file << Series2String(s.series) << "," << s.value << "," << s.prefix + s.unit << "," << s.tolerance << "\n";
+    }
+}
