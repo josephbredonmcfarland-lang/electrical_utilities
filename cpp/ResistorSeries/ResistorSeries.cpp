@@ -92,7 +92,7 @@ std::vector<ResistorData> ResistorSeries:: Compile() const{
     return stream;
 
 }
-std::string Series2String(ESeries s) {
+std::string ResistorSeries::Series2String(ESeries s) {
     switch (s) {
         case ESeries::E6:   return "E6";
         case ESeries::E12:  return "E12";
@@ -104,7 +104,7 @@ std::string Series2String(ESeries s) {
     return "";
 }
 
-void ExportCSV(std::vector<ResistorData> stream, std::string filename) {
+void ResistorSeries::ExportCSV(std::vector<ResistorData> stream, std::string filename) {
     // Open Filestream
     std::ofstream file(filename);
     if (!file.is_open()) {
