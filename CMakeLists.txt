@@ -12,8 +12,8 @@ add_library(electrical_utilities
         cpp/ResistorSeries/ResistorSeries.h
         cpp/Math/RoundTo.cpp
         cpp/Math/RoundTo.h
-        cpp/Circuit/ParallelResistance.cpp
-        cpp/Circuit/ParallelResistance.h
+        cpp/Circuit/Combinations.cpp
+        cpp/Circuit/Combinations.h
 )
 
 
