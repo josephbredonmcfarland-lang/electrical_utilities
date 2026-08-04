@@ -22,7 +22,7 @@ The Sample struct acts like a container for a single time stamped sample of the 
 
 `std::vector<Sample>` is built from these samples and represents the signal over time. This vector may be the output or serve as the input for the following discrete signal generators.
 ___
-## Class: `TIMER_xx555` (Base Class)
+## Class: `Timer555` (Base Class)
 `TIMER_xx555_MONOSTABLE` and `TIMER_xx555_ASTABLE` both inherit from this class. It owns the shared state (`vcc`, `r_a`, `c`) and shared behavior (validation, threshold calculation, CSV export) common to every operating mode. It is not intended to be instantiated directly.
 ### Constructor
 ```cpp
@@ -63,7 +63,7 @@ Static — does not require a constructed timer instance, since it operates only
 **Throws**: `std::runtime_error` if the file cannot be opened.
 ___
 ## Class: `TIMER_xx555_MONOSTABLE`
-Extends `TIMER_xx555`. Reacts to a signal input; a falling edge below the low voltage threshold triggers a single output pulse of fixed duration. Inherits `set_vcc`, `set_r_a`, `set_c`, and `export_to_csv` unchanged from the base class.
+Extends `Timer555`. Reacts to a signal input; a falling edge below the low voltage threshold triggers a single output pulse of fixed duration. Inherits `set_vcc`, `set_r_a`, `set_c`, and `export_to_csv` unchanged from the base class.
 ### Constructor
 ```cpp
 TIMER_xx555_MONOSTABLE(float vcc, float r_a, float c)
@@ -89,7 +89,7 @@ std::vector<Sample> generate_signal(const std::vector<Sample>& input_signal) con
 **Returns**: A `std::vector<Sample>` the same length as `input_signal` minus one (the first input sample has no prior sample to compare against, so it produces no corresponding output).
 ___
 ## Class: `TIMER_xx555_ASTABLE`
-Extends `TIMER_xx555`. Acts as a free running oscillator whose timing is set entirely by its physical components — no trigger input required. Inherits `set_vcc`, `set_r_a`, `set_c`, and `export_to_csv` unchanged from the base class.
+Extends `Timer555`. Acts as a free running oscillator whose timing is set entirely by its physical components — no trigger input required. Inherits `set_vcc`, `set_r_a`, `set_c`, and `export_to_csv` unchanged from the base class.
 ### Constructor
 ```cpp
 TIMER_xx555_ASTABLE(float vcc, float r_a, float r_b, float c)
