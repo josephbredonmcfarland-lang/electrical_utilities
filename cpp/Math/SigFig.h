@@ -1,13 +1,13 @@
 #ifndef ELECTRICAL_UTILITIES_SIGFIG_H
 #define ELECTRICAL_UTILITIES_SIGFIG_H
-
+#pragma once
 
 class SigFig {
 private:
     double num;
     int sigfig;
 public:
-    SigFig();
+  static double SigFig(double num, int sigfig);
 };
 
 
