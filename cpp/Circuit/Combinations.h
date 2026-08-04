@@ -12,7 +12,7 @@
     double ParallelCapacitance(double C1, double C2);
     double ParallelCapacitance(std::vector<double> cList);
     double SeriesCapacitance(double C1, double C2);
-    double SeriesCapactitance(std::vector<double> rList);
+    double SeriesCapacitance(std::vector<double> rList);
 
 
 #endif //ELECTRICAL_UTILITIES_PARALLELRESISTANCE_H
