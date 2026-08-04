@@ -1,9 +1,9 @@
 #include "Combinations.h"
 #include <numeric>
-#include "ReciprocalSum.h"
+#include "HarmonicSum.h"
 
 double ParallelResistance(std::initializer_list<double> rList) {
-    return ReciprocalSum(rList);
+    return HarmonicSum(rList);
 }
 
 double SeriesResistance(std::initializer_list<double> rList) {
@@ -15,5 +15,5 @@ double ParallelCapacitance(std::initializer_list<double> cList) {
 }
 
 double SeriesCapacitance(std::initializer_list<double> cList) {
-    return ReciprocalSum(cList);
+    return HarmonicSum(cList);
 }

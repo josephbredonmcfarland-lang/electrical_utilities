@@ -14,8 +14,8 @@ add_library(electrical_utilities
         cpp/Math/RoundTo.h
         cpp/Circuit/Combinations.cpp
         cpp/Circuit/Combinations.h
-        cpp/Math/ReciprocalSum.cpp
-        cpp/Math/ReciprocalSum.h
+        cpp/Math/HarmonicSum.cpp
+        cpp/Math/HarmonicSum.h
 )
 
 
