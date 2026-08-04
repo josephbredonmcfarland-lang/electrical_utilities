@@ -1,4 +1,4 @@
-#include "HarmonicSum.h"
+#include "ParallelSum.h"
 #include <cmath>
 #include <stdexcept>
 
