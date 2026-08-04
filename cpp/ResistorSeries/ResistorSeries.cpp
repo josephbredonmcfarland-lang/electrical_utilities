@@ -3,6 +3,7 @@
 #include <vector>
 #include <cmath>
 #include <fstream>
+#include <SigFig.h>
 
 // Constructor
 ResistorSeries::ResistorSeries(ESeries series)
@@ -83,7 +84,7 @@ std::vector<ResistorData> ResistorSeries:: Compile() const{
         float divisor = std::pow(10.0f, static_cast<float>(groupStart));
         // Compile Resistor Data
         data.series = ResistorSeries::series;
-        data.value = values[i] / divisor;
+        data.value = SigFig(values[i] / divisor, 2);
         data.prefix = GetPrefix(exponent);
         data.unit = "Ω";
         data.tolerance = ResistorSeries::tolerance;
