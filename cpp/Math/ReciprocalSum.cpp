@@ -1,5 +1,6 @@
 #include "ReciprocalSum.h"
 #include <cmath>
+#include <stdexcept>
 
 double ReciprocalSum(std::initializer_list<double> list) {
     double num = 0;
