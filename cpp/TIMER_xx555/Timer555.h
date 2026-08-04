@@ -13,14 +13,14 @@ struct Sample {
 };
 
 // Base Class 555 Timer
-class TIMER_xx555 {
+class Timer555 {
 protected:
     float vcc, r_a, c, v_thresh_low, v_thresh_high;
     void update_thresholds();
     void validate() const;
 public:
     // Constructor
-    TIMER_xx555( float vcc, float r_a, float c);
+    Timer555( float vcc, float r_a, float c);
     // Setters
     void set_vcc(float new_vcc);
     void set_r_a(float new_r_a);
@@ -31,7 +31,7 @@ public:
 };
 
 // Sub Class: Reacts to a signal input; uses a falling edge trigger (v_thresh_low) to trigger pulse
-class TIMER_xx555_MONOSTABLE : public TIMER_xx555 {
+class TIMER_xx555_MONOSTABLE : public Timer555 {
 public:
     // Constructor
     TIMER_xx555_MONOSTABLE( float vcc, float r_a, float c);
@@ -42,7 +42,7 @@ public:
 };
 
 // Sub Class: Acts as a free running oscillator whose timing is related to its physical components
-class TIMER_xx555_ASTABLE : public TIMER_xx555 {
+class TIMER_xx555_ASTABLE : public Timer555 {
 private:
     float r_b;
 public:

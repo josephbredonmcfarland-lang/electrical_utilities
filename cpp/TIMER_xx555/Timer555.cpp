@@ -1,21 +1,21 @@
-#include "TIMER_xx555.h"
+#include "Timer555.h"
 #include <stdexcept>
 #include <fstream>
 #include <cmath>
 
 
 // Constructor
-TIMER_xx555::TIMER_xx555( float vcc, float r_a, float c)
+Timer555::Timer555( float vcc, float r_a, float c)
     : vcc(vcc), r_a(r_a), c(c) {
     validate();
     update_thresholds();
 }
 // Validate/Update Values
-void TIMER_xx555::update_thresholds() {
+void Timer555::update_thresholds() {
     v_thresh_low = (1.0f/3.0f)*vcc;
     v_thresh_high = (2.0f/3.0f)*vcc;
 }
-void TIMER_xx555::validate() const {
+void Timer555::validate() const {
     if (vcc < 5.0f || vcc > 15.0f) {
         throw std::invalid_argument("Vcc is out of range 5V-14V");
     }
@@ -24,21 +24,21 @@ void TIMER_xx555::validate() const {
     }
 }
 // Setters
-void TIMER_xx555::set_vcc(float new_vcc) {
+void Timer555::set_vcc(float new_vcc) {
     vcc = new_vcc;
     validate();
     update_thresholds();
 }
-void TIMER_xx555::set_r_a(float new_r_a) {
+void Timer555::set_r_a(float new_r_a) {
     r_a = new_r_a;
     validate();
 }
-void TIMER_xx555::set_c(float new_c) {
+void Timer555::set_c(float new_c) {
     c = new_c;
     validate();
 }
 // CSV File Export
-void TIMER_xx555::export_to_csv(const std::vector<Sample>& samples, const std::string& filename){
+void Timer555::export_to_csv(const std::vector<Sample>& samples, const std::string& filename){
     // Open Filestream
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -54,7 +54,7 @@ void TIMER_xx555::export_to_csv(const std::vector<Sample>& samples, const std::s
 // Monostable Operation
 // Reacts to a signal input; uses a falling edge trigger (v_thresh_low)
 TIMER_xx555_MONOSTABLE::TIMER_xx555_MONOSTABLE(float vcc, float r_a, float c)
-: TIMER_xx555(vcc, r_a, c) {
+: Timer555(vcc, r_a, c) {
 }
 // Calculator
 float TIMER_xx555_MONOSTABLE::pulsewidth() const {
@@ -93,7 +93,7 @@ std::vector<Sample> TIMER_xx555_MONOSTABLE::generate_signal(const std::vector<Sa
 // Astable Operation
 // Free running oscillator
 TIMER_xx555_ASTABLE::TIMER_xx555_ASTABLE(float vcc, float r_a, float r_b, float c)
-    : TIMER_xx555(vcc, r_a, c) , r_b(r_b) {
+    : Timer555(vcc, r_a, c) , r_b(r_b) {
     validate_r_b();
 }
 void TIMER_xx555_ASTABLE::validate_r_b() const {
