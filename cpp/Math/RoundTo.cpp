@@ -1,7 +1,9 @@
-#include "SigFig.h"
+// SigFig rounds to a significant digit
+
+#include "RoundTo.h"
 #include <cmath>
 
-double SigFig(double num, int sigfig) {
+double RoundTo(double num, int sigfig) {
     if (num == 0) {
         return 0;
     }

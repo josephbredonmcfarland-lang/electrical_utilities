@@ -10,8 +10,10 @@ add_library(electrical_utilities
         cpp/Timer555/Timer555.h
         cpp/ResistorSeries/ResistorSeries.cpp
         cpp/ResistorSeries/ResistorSeries.h
-        cpp/Math/SigFig.cpp
-        cpp/Math/SigFig.h
+        cpp/Math/RoundTo.cpp
+        cpp/Math/RoundTo.h
+        cpp/Math/ParallelResistance.cpp
+        cpp/Math/ParallelResistance.h
 )
 
 
