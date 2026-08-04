@@ -92,6 +92,7 @@ std::vector<ResistorData> ResistorSeries:: Compile() const{
     return stream;
 
 }
+// Export
 std::string ResistorSeries::Series2String(ESeries s) {
     switch (s) {
         case ESeries::E6:   return "E6";
@@ -103,7 +104,6 @@ std::string ResistorSeries::Series2String(ESeries s) {
     }
     return "";
 }
-
 void ResistorSeries::ExportCSV(std::vector<ResistorData>& stream, const std::string& filename) {
     // Open Filestream
     std::ofstream file(filename);
@@ -111,7 +111,7 @@ void ResistorSeries::ExportCSV(std::vector<ResistorData>& stream, const std::str
         throw std::runtime_error("Could not open file: " + filename);
     }
     // Write to CSV
-    file << "Series, Value, Unit, Tolerance\n";
+    file << "Series,Value,Unit,Tolerance\n";
     for (const ResistorData& s : stream) {
         file << Series2String(s.series) << "," << s.value << "," << s.prefix + s.unit << "," << s.tolerance << "\n";
     }

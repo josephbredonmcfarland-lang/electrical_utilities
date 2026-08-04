@@ -10,6 +10,15 @@ add_library(electrical_utilities
         cpp/TIMER_xx555/TIMER_xx555.h
         cpp/ResistorSeries/ResistorSeries.cpp
         cpp/ResistorSeries/ResistorSeries.h
-        cpp/ResistorSeries/main.cpp)
+        cpp/Math/SigFig.cpp
+        cpp/Math/SigFig.h
+)
 
-target_include_directories(electrical_utilities PUBLIC cpp/TIMER_xx555)
+
+target_include_directories(electrical_utilities PUBLIC cpp/TIMER_xx555, electrical_utilities PUBLIC cpp/ResistorSeries)
+
+# Build the executable from your main file
+add_executable(myapp cpp/ResistorSeries/test_files/main.cpp)
+
+# Link the library into the executable
+target_link_libraries(myapp PRIVATE electrical_utilities)
