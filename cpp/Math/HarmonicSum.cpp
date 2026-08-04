@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 
-double ReciprocalSum(std::initializer_list<double> list) {
+double HarmonicSum(std::initializer_list<double> list) {
     double num = 0;
     for (const double x : list) {
         if (x == 0) {
