@@ -16,12 +16,13 @@ bool Node::isGround() const{
     return referenceNode;
 }
 const std::vector<Branch*>& Node::getBranches(Branch* b) const {
-}   return Node::branch;
+    return Node::branch;
+}
 
 // Setters
 void Node::setVoltage(double voltage) {
     Node::nodeVoltage = voltage;
 }
 void Node::addBranch(Branch* b) {
-    b.push_back(b);
+    Node::branch.push_back(b);
 }
