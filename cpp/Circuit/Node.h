@@ -2,7 +2,7 @@
 #define ELECTRICAL_UTILITIES_NODE_H
 #include <vector>
 
-class Branch{};
+class Branch;
 
 class Node {
 public:

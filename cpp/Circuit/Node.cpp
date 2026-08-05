@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Branch.h"
 
 //Constructor
 Node::Node(int id, bool referenceNode)
