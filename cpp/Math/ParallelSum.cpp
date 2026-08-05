@@ -1,6 +1,7 @@
 #include "ParallelSum.h"
 #include <stdexcept>
 
+
 double ParallelSum(std::initializer_list<double> list) {
     double num = 0;
     for (const double x : list) {

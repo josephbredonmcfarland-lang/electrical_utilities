@@ -1,10 +1,8 @@
-//
-// Created by josep on 8/4/2026.
-//
+
 
 #ifndef ELECTRICAL_UTILITIES_PARALLELSUM_H
 #define ELECTRICAL_UTILITIES_PARALLELSUM_H
-#include <vector>
+#include <initializer_list>
 
 double ParallelSum(std::initializer_list<double> list);
 
