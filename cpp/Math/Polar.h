@@ -1,7 +1,3 @@
-//
-// Created by josep on 8/5/2026.
-//
-
 #ifndef ELECTRICAL_UTILITIES_POLAR_H
 #define ELECTRICAL_UTILITIES_POLAR_H
 

@@ -21,6 +21,10 @@ add_library(electrical_utilities
         cpp/Math/CarToPol.cpp
         cpp/Math/CarToPol.h
         cpp/Math/Polar.h
+        cpp/Circuit/Node.cpp
+        cpp/Circuit/Node.h
+        cpp/Circuit/Branch.cpp
+        cpp/Circuit/Branch.h
 )
 
 
