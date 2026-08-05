@@ -1,5 +1,4 @@
-// SigFig rounds to a significant digit
-
+// Round to a significant figure
 #include "RoundTo.h"
 #include <cmath>
 

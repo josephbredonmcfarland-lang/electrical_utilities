@@ -4,5 +4,4 @@
 
 double RoundTo(double num, int sigfig);
 
-
 #endif //ELECTRICAL_UTILITIES_ROUNDTO_H
