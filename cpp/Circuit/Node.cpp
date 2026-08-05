@@ -3,8 +3,7 @@
 
 //Constructor
 Node::Node(int id, bool referenceNode)
-    :id(id), referenceNode(referenceNode) {
-}
+    :id(id), referenceNode(referenceNode), nodeVoltage(0) {}
 // Getters
 int Node::getId() const {
     return id;
