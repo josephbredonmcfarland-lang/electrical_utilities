@@ -1,11 +1,8 @@
 #ifndef ELECTRICAL_UTILITIES_CARTOPOL_H
 #define ELECTRICAL_UTILITIES_CARTOPOL_H
 #include <complex>
+#include "Polar.h"
 
-    struct Polar {
-        double magnitude;
-        double direction;
-    };
 
     Polar CarToPol(std::complex<double> car);
 
