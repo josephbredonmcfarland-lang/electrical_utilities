@@ -20,6 +20,7 @@ add_library(electrical_utilities
         cpp/Math/PolToCar.h
         cpp/Math/CarToPol.cpp
         cpp/Math/CarToPol.h
+        cpp/Math/Polar.h
 )
 
 
