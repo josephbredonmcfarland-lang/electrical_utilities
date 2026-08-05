@@ -14,8 +14,12 @@ add_library(electrical_utilities
         cpp/Math/RoundTo.h
         cpp/Circuit/Combinations.cpp
         cpp/Circuit/Combinations.h
-        cpp/Math/ParallelSum.cpp
-        cpp/Math/ParallelSum.h
+        cpp/Math/HarmonicSum.cpp
+        cpp/Math/HarmonicSum.h
+        cpp/Math/PolToCar.cpp
+        cpp/Math/PolToCar.h
+        cpp/Math/CarToPol.cpp
+        cpp/Math/CarToPol.h
 )
 
 
@@ -24,7 +28,6 @@ target_include_directories(electrical_utilities
             cpp/Timer555
             cpp/ResistorSeries
             cpp/Math
-            cpp/Circuit
 )
 
 # Build the executable from your main file
