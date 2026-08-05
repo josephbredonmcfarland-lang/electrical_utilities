@@ -1,14 +1,15 @@
 #ifndef ELECTRICAL_UTILITIES_PARALLELRESISTANCE_H
 #define ELECTRICAL_UTILITIES_PARALLELRESISTANCE_H
-#include <vector>
+#include <initializer_list>
+
 
     // DC Resistance
-    double ParallelResistance(std::vector<double> R);
-    double SeriesResistance(std::vector<double> rList);
+    double ParallelResistance(std::initializer_list<double> rList);
+    double SeriesResistance(std::initializer_list<double> rList);
 
     // DC Capacitance
-    double ParallelCapacitance(std::vector<double> cList);
-    double SeriesCapacitance(std::vector<double> cList);
+    double ParallelCapacitance(std::initializer_list<double> cList);
+    double SeriesCapacitance(std::initializer_list<double> cList);
 
 
 #endif //ELECTRICAL_UTILITIES_PARALLELRESISTANCE_H
