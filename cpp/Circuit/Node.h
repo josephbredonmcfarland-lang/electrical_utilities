@@ -1,7 +1,8 @@
 #ifndef ELECTRICAL_UTILITIES_NODE_H
 #define ELECTRICAL_UTILITIES_NODE_H
-#include "Branch.h"
 #include <vector>
+
+class Branch{};
 
 class Node {
 public:

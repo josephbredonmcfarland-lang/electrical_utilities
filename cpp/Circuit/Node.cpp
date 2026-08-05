@@ -4,7 +4,6 @@
 Node::Node(int id, bool referenceNode)
     :id(id), referenceNode(referenceNode) {
 }
-
 // Getters
 int Node::getId() const {
     return id;
@@ -15,7 +14,7 @@ double Node::getNodeVoltage() const{
 bool Node::isGround() const{
     return referenceNode;
 }
-const std::vector<Branch*>& Node::getBranches(Branch* b) const {
+const std::vector<Branch*>& Node::getBranches() const {
     return Node::branch;
 }
 
