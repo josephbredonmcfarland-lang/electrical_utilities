@@ -1,6 +1,4 @@
 #include "Node.h"
-#include "Branch.h"
-#include <array>
 
 //Constructor
 Node::Node(int id, bool referenceNode)
@@ -8,24 +6,22 @@ Node::Node(int id, bool referenceNode)
 }
 
 // Getters
-int Node::getid() const {
-    return Node::id;
+int Node::getId() const {
+    return id;
 }
 double Node::getNodeVoltage() const{
     return Node::nodeVoltage;
 }
 bool Node::isGround() const{
-    return Node::referenceNode;
+    return referenceNode;
 }
-void getBranches(Branch* b) {
-}
+const std::vector<Branch*>& Node::getBranches(Branch* b) const {
+}   return Node::branch;
 
 // Setters
 void Node::setVoltage(double voltage) {
     Node::nodeVoltage = voltage;
 }
-void addBranch(Branch* b) {
+void Node::addBranch(Branch* b) {
     b.push_back(b);
 }
-
-//Add Branch

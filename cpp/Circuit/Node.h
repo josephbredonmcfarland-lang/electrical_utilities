@@ -1,6 +1,6 @@
 #ifndef ELECTRICAL_UTILITIES_NODE_H
 #define ELECTRICAL_UTILITIES_NODE_H
-#include <string>
+#include "Branch.h"
 #include <vector>
 
 class Node {
