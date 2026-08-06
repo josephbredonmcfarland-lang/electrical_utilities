@@ -25,6 +25,8 @@ add_library(electrical_utilities
         cpp/Circuit/Node.h
         cpp/Circuit/Branch.cpp
         cpp/Circuit/Branch.h
+        cpp/Circuit/Element.cpp
+        cpp/Circuit/Element.h
 )
 
 
