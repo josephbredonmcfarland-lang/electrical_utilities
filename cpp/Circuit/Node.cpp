@@ -1,3 +1,5 @@
+#include <iostream>
+#include <vector>
 #include "Node.h"
 #include "Branch.h"
 
@@ -23,4 +25,9 @@ void Node::setVoltage(double voltage) {
 }
 void Node::addBranch(Branch* b) {
     Node::branches.push_back(b);
+}
+
+ReferenceNode::ReferenceNode(int id): Node(id){}
+void ReferenceNode::setVoltage(double voltage) const {
+    throw std::logic_error("Cannot set reference node voltage");
 }

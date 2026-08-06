@@ -2,6 +2,7 @@
 #define ELECTRICAL_UTILITIES_ELEMENT_H
 #include <string>
 
+
 // Base Class
 class Element {
 public:
@@ -19,7 +20,7 @@ public:
     double getValue() const;
     virtual std::string getUnit() const= 0;
     // Setters
-    void setValue(double newValue);
+    static void setValue(double newValue);
 
 };
 
