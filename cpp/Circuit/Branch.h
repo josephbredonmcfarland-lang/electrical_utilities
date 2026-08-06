@@ -1,6 +1,5 @@
 #ifndef ELECTRICAL_UTILITIES_BRANCH_H
 #define ELECTRICAL_UTILITIES_BRANCH_H
-#include "Node.h"
 
 class Node;
 class Element;

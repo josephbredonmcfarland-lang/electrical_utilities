@@ -9,13 +9,13 @@ int Node::getId() const {
     return id;
 }
 double Node::getNodeVoltage() const{
-    return Node::nodeVoltage;
+    return nodeVoltage;
 }
 bool Node::isGround() const{
     return referenceNode;
 }
 const std::vector<Branch*>& Node::getBranches() const {
-    return Node::branch;
+    return Node::branches;
 }
 
 // Setters
@@ -23,5 +23,5 @@ void Node::setVoltage(double voltage) {
     Node::nodeVoltage = voltage;
 }
 void Node::addBranch(Branch* b) {
-    Node::branch.push_back(b);
+    Node::branches.push_back(b);
 }

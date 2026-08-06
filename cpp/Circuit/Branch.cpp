@@ -11,10 +11,10 @@ int getNodeA() const {
     return nodeA;
 }
 int getNodeB() const {
-    return nodeB;
+    return Branch::nodeB;
 }
 double getCurrent() const {
-    return current;
+    return Branch::current;
 }
 void setCurrent(double current) {
     Branch::current = current;

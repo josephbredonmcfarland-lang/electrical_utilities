@@ -13,7 +13,7 @@ public:
     bool referenceNode;
 
     // Connected Branches
-    std::vector<Branch*> branch;
+    std::vector<Branch*> branches;
 
     // Constructor
     Node(int id, bool isReference);
