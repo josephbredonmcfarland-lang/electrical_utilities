@@ -17,7 +17,6 @@ bool Node::isGround() const{
 const std::vector<Branch*>& Node::getBranches() const {
     return Node::branches;
 }
-
 // Setters
 void Node::setVoltage(double voltage) {
     Node::nodeVoltage = voltage;

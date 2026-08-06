@@ -6,24 +6,19 @@ class Branch;
 
 class Node {
 public:
-
     // Netlist Values
     int id;
     double nodeVoltage;
     bool isReference;
-
     // Connected Branches
     std::vector<Branch*> branches;
-
     // Constructor
     Node(int id, bool isReference);
-
     // Getters
     int getId() const;
     double getNodeVoltage() const;
     bool isGround() const;
     const std::vector<Branch*>& getBranches() const;
-
     // Setters
     void setVoltage(double voltage);
     void addBranch(Branch* branch);

@@ -5,7 +5,7 @@
 // Constructor
 Branch::Branch(int id, Node* nodeA, Node* nodeB, Element* element)
 :id(id), nodeA(nodeA), nodeB(nodeB), element(element), current(0.0) {}
-
+// Getters
 int Branch::getId() const {
     return id;
 }
@@ -21,6 +21,7 @@ Element* Branch::getElement() const {
 double Branch::getCurrent() const {
     return current;
 }
+// Setters
 void Branch::setCurrent(double current) {
     Branch::current = current;
 }

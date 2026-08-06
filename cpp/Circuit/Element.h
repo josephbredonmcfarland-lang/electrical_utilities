@@ -17,19 +17,16 @@ public:
     virtual std::string getUnit() const= 0;
     // Setters
 };
-
 class Resistor: public Element {
 public:
     Resistor(const std::string& id, double value);
     std::string getUnit() const override;
 };
-
 class Capacitor: public Element {
 public:
     Capacitor(const std::string& id, double value);
     std::string getUnit() const override;
 };
-
 class Inductor: public Element {
 public:
     Inductor(const std::string& id, double value);
