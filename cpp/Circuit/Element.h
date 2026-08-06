@@ -2,7 +2,6 @@
 #define ELECTRICAL_UTILITIES_ELEMENT_H
 #include <string>
 
-
 // Base Class
 class Element {
 public:
@@ -40,12 +39,11 @@ public:
     Inductor(const std::string& id, double value);
     std::string getUnit() const override;
 };
-// Sources
+// Ideal Sources
 class VoltageSource: public Element {
 public:
     VoltageSource(const std::string& id, double value);
     std::string getUnit() const override;
 };
-
 
 #endif //ELECTRICAL_UTILITIES_ELEMENT_H

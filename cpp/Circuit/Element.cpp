@@ -28,29 +28,30 @@ void Element::setValue(double newValue) {
 
 // Derived Class: Resistor
 Resistor::Resistor(const std::string& id, double value)
-    : Element(id, value) {};
-// Get Ohms
+    : Element(id, value) {}
 std::string Resistor::getUnit() const {
     return "Ω";
 }
 
 // Derived Class: Capacitor
 Capacitor::Capacitor(const std::string& id, double value)
-    : Element(id, value) {};
-// Get Farads
-    std::string Capacitor::getUnit() const {
+    : Element(id, value) {}
+std::string Capacitor::getUnit() const {
     return "F";
 }
 
 // Derived Class: Inductor
 Inductor::Inductor(const std::string& id, double value)
-    : Element(id, value) {};
-// Get Henry
+    : Element(id, value) {}
 std::string Inductor::getUnit() const {
     return "H";
 }
 
 // Sources
+VoltageSource::VoltageSource(const std::string& id, double value): Element(id, value) {}
+std::string VoltageSource::getUnit() const {
+    return "V";
+}
 
 
 

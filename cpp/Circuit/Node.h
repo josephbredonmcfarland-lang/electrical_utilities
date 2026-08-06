@@ -1,9 +1,7 @@
 #ifndef ELECTRICAL_UTILITIES_NODE_H
 #define ELECTRICAL_UTILITIES_NODE_H
 
-
 class Branch;
-
 class Node {
 public:
     // Netlist Values
@@ -24,12 +22,10 @@ public:
     virtual void setVoltage(double voltage) = 0;
     void addBranch(Branch* branch);
 };
-
 class ReferenceNode : public Node {
 public:
     ReferenceNode(int id);
     void setVoltage(double voltage) override;
 };
-
 
 #endif //ELECTRICAL_UTILITIES_NODE_H
