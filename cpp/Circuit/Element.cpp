@@ -30,7 +30,7 @@ std::string Resistor::getUnit() const {
     return "Ω";
 }
 
-// Derived Class: Resistor
+// Derived Class: Capacitor
 Capacitor::Capacitor(const std::string& id, double value)
     : Element(id, value) {};
 // Get Ohms
@@ -38,12 +38,12 @@ Capacitor::Capacitor(const std::string& id, double value)
     return "F";
 }
 
-// Derived Class: Resistor
+// Derived Class: Inductor
 Inductor::Inductor(const std::string& id, double value)
     : Element(id, value) {};
 // Get Ohms
 std::string Inductor::getUnit() const {
-    return "L";
+    return "H";
 }
 
 

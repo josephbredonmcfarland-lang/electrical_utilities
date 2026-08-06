@@ -11,7 +11,7 @@ double SeriesResistance(std::initializer_list<double> rList) {
 }
 
 double ParallelCapacitance(std::initializer_list<double> cList) {
-    return std::accumulate(cList.begin(), cList.end(), 0.0);;
+    return std::accumulate(cList.begin(), cList.end(), 0.0);
 }
 
 double SeriesCapacitance(std::initializer_list<double> cList) {
