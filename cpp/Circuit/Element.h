@@ -10,24 +10,30 @@ public:
     // Constructor
     Element(std::string id, double value);
     // Validate inputs
-    void validate();
+    void validate() const;
     // Getters
     std::string getId() const;
     double getValue() const;
-    virtual std::string getUnit();
+    virtual std::string getUnit() const= 0;
     // Setters
 };
 
 class Resistor: public Element {
-    Resistor(std::string id, double value);
+public:
+    Resistor(const std::string& id, double value);
+    std::string getUnit() const override;
 };
 
 class Capacitor: public Element {
-    Capacitor(std::string id, double value);
+public:
+    Capacitor(const std::string& id, double value);
+    std::string getUnit() const override;
 };
 
 class Inductor: public Element {
-    Inductor(std::string id, double value);
+public:
+    Inductor(const std::string& id, double value);
+    std::string getUnit() const override;
 };
 
 
