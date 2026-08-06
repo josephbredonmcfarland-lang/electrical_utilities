@@ -1,6 +1,6 @@
 #ifndef ELECTRICAL_UTILITIES_NODE_H
 #define ELECTRICAL_UTILITIES_NODE_H
-#include
+
 
 class Branch;
 
@@ -28,7 +28,7 @@ public:
 class ReferenceNode : public Node {
 public:
     ReferenceNode(int id);
-    void setVoltage(double voltage) const override;
+    void setVoltage(double voltage) override;
 };
 
 

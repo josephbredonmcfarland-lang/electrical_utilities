@@ -27,7 +27,9 @@ void Node::addBranch(Branch* b) {
     Node::branches.push_back(b);
 }
 
+
 ReferenceNode::ReferenceNode(int id): Node(id){}
-void ReferenceNode::setVoltage(double voltage) const {
+
+void ReferenceNode::setVoltage(double voltage) {
     throw std::logic_error("Cannot set reference node voltage");
 }

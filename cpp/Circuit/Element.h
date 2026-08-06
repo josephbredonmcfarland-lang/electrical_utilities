@@ -20,7 +20,7 @@ public:
     double getValue() const;
     virtual std::string getUnit() const= 0;
     // Setters
-    static void setValue(double newValue);
+    void setValue(double newValue);
 
 };
 
