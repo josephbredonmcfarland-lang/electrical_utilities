@@ -4,19 +4,22 @@
 Branch::Branch(int id, Node* nodeA, Node* nodeB, Element* element)
 :id(id), nodeA(nodeA), nodeB(nodeB), element(element), current(0.0) {}
 
-int getId() const {
+int Branch::getId() const {
     return id;
 }
-int getNodeA() const {
+int Branch::getNodeA() const {
     return nodeA;
 }
-int getNodeB() const {
+int Branch::getNodeB() const {
     return Branch::nodeB;
 }
-double getCurrent() const {
+Element* Branch::getElement() const {
+    return element;
+}
+double Branch::getCurrent() const {
     return Branch::current;
 }
-void setCurrent(double current) {
+void Branch::setCurrent(double current) {
     Branch::current = current;
 }
 
