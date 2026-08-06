@@ -4,11 +4,18 @@
 
 class Element {
 public:
+    // Component and material value
     std::string id;
     double value;
-    std::string unit;
+    // Constructor
     Element(std::string id, double value);
+    // Validate inputs
     void validate();
+    // Getters
+    std::string getId() const;
+    double getValue() const;
+    virtual std::string getUnit();
+    // Setters
 };
 
 class Resistor: public Element {
