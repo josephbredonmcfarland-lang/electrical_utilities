@@ -37,6 +37,7 @@ target_include_directories(electrical_utilities
             cpp/Timer555
             cpp/ResistorSeries
             cpp/Math
+            cpp/Circuit
 )
 
 # Build the executable from your main file

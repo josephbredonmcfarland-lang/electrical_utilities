@@ -10,7 +10,7 @@ public:
     // Netlist Values
     int id;
     double nodeVoltage;
-    bool referenceNode;
+    bool isReference;
 
     // Connected Branches
     std::vector<Branch*> branches;

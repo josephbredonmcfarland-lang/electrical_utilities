@@ -2,8 +2,8 @@
 #include "Branch.h"
 
 //Constructor
-Node::Node(int id, bool referenceNode)
-    :id(id), referenceNode(referenceNode), nodeVoltage(0.0) {}
+Node::Node(int id, bool isReference)
+    : id(id), isReference(isReference), nodeVoltage(0.0) {}
 // Getters
 int Node::getId() const {
     return id;
@@ -12,7 +12,7 @@ double Node::getNodeVoltage() const{
     return nodeVoltage;
 }
 bool Node::isGround() const{
-    return referenceNode;
+    return isReference;
 }
 const std::vector<Branch*>& Node::getBranches() const {
     return Node::branches;
