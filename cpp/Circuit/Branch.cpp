@@ -11,13 +11,13 @@ int Branch::getNodeA() const {
     return nodeA;
 }
 int Branch::getNodeB() const {
-    return Branch::nodeB;
+    return nodeB;
 }
 Element* Branch::getElement() const {
     return element;
 }
 double Branch::getCurrent() const {
-    return Branch::current;
+    return current;
 }
 void Branch::setCurrent(double current) {
     Branch::current = current;
