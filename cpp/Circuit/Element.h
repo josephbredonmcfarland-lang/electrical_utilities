@@ -10,6 +10,8 @@ public:
     double value;
     // Constructor
     Element(std::string id, double value);
+    // Virtual Destructor
+    virtual ~Element() = default;
     // Validate inputs
     void validate() const;
     // Getters
@@ -17,9 +19,11 @@ public:
     double getValue() const;
     virtual std::string getUnit() const= 0;
     // Setters
+    void setValue(double newValue);
+
 };
 
-// Fundamental Components
+// Passive Elements
 class Resistor: public Element {
 public:
     Resistor(const std::string& id, double value);
@@ -35,7 +39,12 @@ public:
     Inductor(const std::string& id, double value);
     std::string getUnit() const override;
 };
-
+// Sources
+class VoltageSource: public Element {
+public:
+    VoltageSource(const std::string& id, double value);
+    std::string getUnit() const override;
+};
 
 
 #endif //ELECTRICAL_UTILITIES_ELEMENT_H

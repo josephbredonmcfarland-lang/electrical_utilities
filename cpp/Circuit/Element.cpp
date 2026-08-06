@@ -21,6 +21,10 @@ std::string Element::getId() const {
 double Element:: getValue() const {
     return value;
 }
+// Setters
+void Element::setValue(double newValue) {
+    value = newValue;
+}
 
 // Derived Class: Resistor
 Resistor::Resistor(const std::string& id, double value)
@@ -45,6 +49,9 @@ Inductor::Inductor(const std::string& id, double value)
 std::string Inductor::getUnit() const {
     return "H";
 }
+
+// Sources
+
 
 
 

@@ -13,15 +13,20 @@ public:
     // Connected Branches
     std::vector<Branch*> branches;
     // Constructor
-    Node(int id, bool isReference);
+    Node(int id);
     // Getters
+    bool isGround() const;
     int getId() const;
     double getNodeVoltage() const;
-    bool isGround() const;
     const std::vector<Branch*>& getBranches() const;
     // Setters
     void setVoltage(double voltage);
     void addBranch(Branch* branch);
+};
+
+class ReferenceNode : public Node {
+public:
+    ReferenceNode(int id);
 };
 
 

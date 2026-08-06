@@ -2,8 +2,8 @@
 #include "Branch.h"
 
 //Constructor
-Node::Node(int id, bool isReference)
-    : id(id), isReference(isReference), nodeVoltage(0.0) {}
+Node::Node(int id)
+    : id(id), nodeVoltage(0.0), isReference(false){}
 // Getters
 int Node::getId() const {
     return id;
