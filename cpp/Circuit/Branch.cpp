@@ -1,4 +1,6 @@
 #include "Branch.h"
+#include "Node.h"
+#include "Element.h"
 
 // Constructor
 Branch::Branch(int id, Node* nodeA, Node* nodeB, Element* element)
