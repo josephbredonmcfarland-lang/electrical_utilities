@@ -29,7 +29,9 @@ void Node::addBranch(Branch* b) {
 }
 
 // Reference node derived class and virtual function:
-ReferenceNode::ReferenceNode(int id): Node(id){}
+ReferenceNode::ReferenceNode(int id): Node(id) {
+    isReference = true;
+}
 void ReferenceNode::setVoltage(double voltage) {
     throw std::logic_error("Cannot set reference node voltage");
 }

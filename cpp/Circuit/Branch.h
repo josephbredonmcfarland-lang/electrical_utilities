@@ -4,6 +4,7 @@
 class Node;
 class Element;
 class Branch {
+
 public:
     // Netlist
     int id;

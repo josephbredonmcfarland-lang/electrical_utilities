@@ -19,7 +19,7 @@ public:
     double getNodeVoltage() const;
     const std::vector<Branch*>& getBranches() const;
     // Setters
-    virtual void setVoltage(double voltage) = 0;
+    virtual void setVoltage(double voltage);
     void addBranch(Branch* branch);
 };
 class ReferenceNode : public Node {
