@@ -21,6 +21,7 @@ std::string Element::getId() const {
 double Element:: getValue() const {
     return value;
 }
+
 // Derived Class: Resistor
 Resistor::Resistor(const std::string& id, double value)
     : Element(id, value) {};
@@ -28,6 +29,7 @@ Resistor::Resistor(const std::string& id, double value)
 std::string Resistor::getUnit() const {
     return "Ω";
 }
+
 // Derived Class: Capacitor
 Capacitor::Capacitor(const std::string& id, double value)
     : Element(id, value) {};
@@ -35,6 +37,7 @@ Capacitor::Capacitor(const std::string& id, double value)
     std::string Capacitor::getUnit() const {
     return "F";
 }
+
 // Derived Class: Inductor
 Inductor::Inductor(const std::string& id, double value)
     : Element(id, value) {};

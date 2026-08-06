@@ -1,6 +1,7 @@
 #ifndef ELECTRICAL_UTILITIES_ELEMENT_H
 #define ELECTRICAL_UTILITIES_ELEMENT_H
 #include <string>
+
 // Base Class
 class Element {
 public:
@@ -17,6 +18,7 @@ public:
     virtual std::string getUnit() const= 0;
     // Setters
 };
+
 // Fundamental Components
 class Resistor: public Element {
 public:
