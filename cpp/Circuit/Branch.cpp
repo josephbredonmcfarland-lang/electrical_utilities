@@ -7,10 +7,10 @@ Branch::Branch(int id, Node* nodeA, Node* nodeB, Element* element)
 int Branch::getId() const {
     return id;
 }
-int Branch::getNodeA() const {
+Node* Branch::getNodeA() const {
     return nodeA;
 }
-int Branch::getNodeB() const {
+Node* Branch::getNodeB() const {
     return nodeB;
 }
 Element* Branch::getElement() const {
