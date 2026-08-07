@@ -1,4 +1,5 @@
 #include "Netlist.h"
+#include <vector>
 
 Netlist::Netlist(std::vector<Branch*> branches): branchList(std::move(branches)){}
 
@@ -8,9 +9,9 @@ void Netlist:: addNode(Node* node) {
 void Netlist::addBranch(Branch* branch) {
     branchList.push_back(branch);
 }
-void removeBranch(Branch* branch) {
-    branchList.remove(branch);
+void Netlist::removeBranch(Branch* branch) {
+    branchList.erase(branchList.begin(), branchList.end(), branch);
 }
-void removeNode(Node* node) {
-    nodeList.remove(node);
+void Netlist::removeNode(Node* node) {
+    nodeList.erase(nodeList.begin(), nodeList.end(), node);
 }
