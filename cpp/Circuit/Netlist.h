@@ -9,7 +9,7 @@ public:
     std::vector<Branch*> branchList;
     std::vector<Node*> nodeList;
     Netlist(std::vector<Branch*> branches);
-    void parseBranches(std::vector<Branch*> branches);
+    void parseList(std::vector<Branch*> branches);
     void addNode(Node*);
     void addBranch(Branch*);
     void removeBranch(Branch*);
