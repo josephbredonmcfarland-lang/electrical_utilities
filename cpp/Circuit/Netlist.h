@@ -11,7 +11,7 @@ public:
     std::vector<Branch*> branchList;
     std::vector<Node*> nodeList;
     Netlist(std::vector<Branch*> branches);
-    void exportList(const std::vector<Branch*>& branches, const std::string& filename) const;
+    void exportList(const std::string& filename) const;
     void addNode(Node*);
     void addBranch(Branch*);
     void removeBranch(Branch*);

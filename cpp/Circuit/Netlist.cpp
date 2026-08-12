@@ -8,12 +8,12 @@
 
 Netlist::Netlist(std::vector<Branch*> branches): branchList(std::move(branches)){}
 
-void Netlist::exportList(const std::vector<Branch*>& branches, const std::string& filename) const {
+void Netlist::exportList(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        throw std::runtime_error(std::runtime_error("Cannot open file" + filename));
+        throw std::runtime_error("Cannot open file " + filename);
     }
-    for (const Branch* branch : branches) {
+    for (const Branch* branch : branchList) {
         Node* nodeA = branch->getNodeA();
         Node* nodeB = branch->getNodeB();
         file << branch->element->getId() << " "
