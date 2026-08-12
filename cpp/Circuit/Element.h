@@ -20,7 +20,6 @@ public:
     virtual std::string getUnit() const= 0;
     // Setters
     void setValue(double newValue);
-
 };
 
 // Passive Elements
