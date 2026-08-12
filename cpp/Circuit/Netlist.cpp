@@ -10,7 +10,7 @@ void Netlist::addBranch(Branch* branch) {
     branchList.push_back(branch);
 }
 void Netlist::removeBranch(Branch* branch) {
-    branchList.erase(branchList.begin(), branchList.end(), branch);
+    branchList.erase(std::remove(branchList.begin(), branchList.end(), branch);
 }
 void Netlist::removeNode(Node* node) {
     nodeList.erase(nodeList.begin(), nodeList.end(), node);

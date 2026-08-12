@@ -1,0 +1,5 @@
+.SUBCKT pot_rv2 1 2 3 PARAMS: Rtot=10k wiper=0.5
+.PARAM w = {wiper < 0.001 ? 0.001 : (wiper > 0.999 ? 0.999 : wiper)}
+R1 1 3 {Rtot * (1 - w)}
+R2 3 2 {Rtot * w}
+.ENDS pot_rv2
