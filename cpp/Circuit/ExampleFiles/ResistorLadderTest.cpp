@@ -10,12 +10,12 @@ int main() {
     auto gnd = new ReferenceNode(0);
 
     // Elements
-    auto V1 = new VoltageSource("V1", 9.0);
-    auto R1 = new Resistor("R1", 100);
-    auto R2 = new Resistor("R2", 220);
-    auto R3 = new Resistor("R3", 150);
-    auto R4 = new Resistor("R4", 330);
-    auto R5 = new Resistor("R5", 470);
+    auto V1 = new VoltageSource(1, 9.0);
+    auto R1 = new Resistor(2, 100);
+    auto R2 = new Resistor(3, 220);
+    auto R3 = new Resistor(4, 150);
+    auto R4 = new Resistor(5, 330);
+    auto R5 = new Resistor(6, 470);
 
     // Branches
     auto b1 = new Branch(1, n1, gnd, V1);  // source: N1 to GND
