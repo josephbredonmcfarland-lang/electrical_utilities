@@ -4,7 +4,10 @@
 
 // Constructor
 Branch::Branch(int id, Node* nodeA, Node* nodeB, Element* element)
-:id(id), nodeA(nodeA), nodeB(nodeB), element(element), current(0.0) {}
+:id(id), nodeA(nodeA), nodeB(nodeB), element(element), current(0.0) {
+    nodeA->addBranch(this);
+    nodeB->addBranch(this);
+}
 // Getters
 int Branch::getId() const {
     return id;

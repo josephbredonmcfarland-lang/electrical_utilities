@@ -22,6 +22,7 @@ public:
     // Setters
     virtual void setVoltage(double voltage);
     void addBranch(Branch* branch);
+    void removeBranch(Branch* branch);
 };
 class ReferenceNode : public Node {
 public:

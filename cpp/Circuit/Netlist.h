@@ -8,10 +8,13 @@
 
 class Netlist {
 public:
+    std::vector<Element*> elementList;
     std::vector<Branch*> branchList;
     std::vector<Node*> nodeList;
     Netlist(std::vector<Branch*> branches);
+    ~Netlist();
     void exportList(const std::string& filename) const;
+    void addElement(Element*);
     void addNode(Node*);
     void addBranch(Branch*);
     void removeBranch(Branch*);

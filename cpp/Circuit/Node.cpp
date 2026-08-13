@@ -27,6 +27,9 @@ void Node::setVoltage(double voltage) {
 void Node::addBranch(Branch* b) {
     Node::branches.push_back(b);
 }
+void Node::removeBranch(Branch* b) {
+    branches.erase(std::remove(branches.begin(), branches.end(), b), branches.end());
+}
 
 // Reference node derived class and virtual function:
 ReferenceNode::ReferenceNode(int id): Node(id) {
