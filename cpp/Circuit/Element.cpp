@@ -5,7 +5,7 @@
 
 // Base Class: Constructor
 Element::Element(int id, double value)
-    : id(std::move(id)), value(value) {
+    : id(id), value(value) {
     validate();
 };
 // Validate input value
@@ -15,7 +15,7 @@ void Element::validate() const {
     }
 }
 // Getters
-std::string Element::getId() const {
+int Element::getId() const {
     return id;
 }
 double Element:: getValue() const {
@@ -27,28 +27,28 @@ void Element::setValue(double newValue) {
 }
 
 // Derived Class: Resistor
-Resistor::Resistor(const std::string& id, double value)
+Resistor::Resistor(int id, double value)
     : Element(id, value) {}
 std::string Resistor::getUnit() const {
     return "Ω";
 }
 
 // Derived Class: Capacitor
-Capacitor::Capacitor(const std::string& id, double value)
+Capacitor::Capacitor(int id, double value)
     : Element(id, value) {}
 std::string Capacitor::getUnit() const {
     return "F";
 }
 
 // Derived Class: Inductor
-Inductor::Inductor(const std::string& id, double value)
+Inductor::Inductor(int id, double value)
     : Element(id, value) {}
 std::string Inductor::getUnit() const {
     return "H";
 }
 
 // Sources
-VoltageSource::VoltageSource(const std::string& id, double value): Element(id, value) {}
+VoltageSource::VoltageSource(int id, double value): Element(id, value) {}
 std::string VoltageSource::getUnit() const {
     return "V";
 }

@@ -15,7 +15,7 @@ public:
     // Validate inputs
     void validate() const;
     // Getters
-    std::string getId() const;
+    int getId() const;
     double getValue() const;
     virtual std::string getUnit() const= 0;
     // Setters
@@ -25,23 +25,23 @@ public:
 // Passive Elements
 class Resistor: public Element {
 public:
-    Resistor(const std::string& id, double value);
+    Resistor(int id, double value);
     std::string getUnit() const override;
 };
 class Capacitor: public Element {
 public:
-    Capacitor(const std::string& id, double value);
+    Capacitor(int id, double value);
     std::string getUnit() const override;
 };
 class Inductor: public Element {
 public:
-    Inductor(const std::string& id, double value);
+    Inductor(int id, double value);
     std::string getUnit() const override;
 };
 // Ideal Sources
 class VoltageSource: public Element {
 public:
-    VoltageSource(const std::string& id, double value);
+    VoltageSource(int id, double value);
     std::string getUnit() const override;
 };
 
