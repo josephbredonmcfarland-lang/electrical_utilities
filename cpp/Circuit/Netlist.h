@@ -3,6 +3,7 @@
 #include <vector>
 #include "Branch.h"
 #include "Node.h"
+#include "Element.h"
 #include <string>
 
 
@@ -11,7 +12,7 @@ public:
     std::vector<Element*> elementList;
     std::vector<Branch*> branchList;
     std::vector<Node*> nodeList;
-    Netlist(std::vector<Branch*> branches);
+    Netlist(std::vector<Node*> nodeList, std::vector<Branch*> branchList, std::vector<Element*> elementList);
     ~Netlist();
     void exportList(const std::string& filename) const;
     void addElement(Element*);

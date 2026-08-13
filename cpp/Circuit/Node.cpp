@@ -2,6 +2,7 @@
 #include <vector>
 #include "Node.h"
 #include "Branch.h"
+#include <algorithm>
 
 //Constructor
 Node::Node(int id)
@@ -27,8 +28,8 @@ void Node::setVoltage(double voltage) {
 void Node::addBranch(Branch* b) {
     Node::branches.push_back(b);
 }
-void Node::removeBranch(Branch* b) {
-    branches.erase(std::remove(branches.begin(), branches.end(), b), branches.end());
+void Node::removeBranch(Branch* branch) {
+    branches.erase(std::remove(branches.begin(), branches.end(), branch), branches.end());
 }
 
 // Reference node derived class and virtual function:

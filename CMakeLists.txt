@@ -32,6 +32,7 @@ add_library(electrical_utilities
         cpp/Circuit/Netlist.cpp
         cpp/Circuit/Netlist.h
         cpp/Circuit/ExampleFiles/ResistorLadderTest.cpp
+        cpp/Circuit/ExampleFiles/VoltageDividerTest.cpp
 )
 
 

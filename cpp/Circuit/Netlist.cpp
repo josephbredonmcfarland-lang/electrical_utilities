@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-#include <Element.h>
 #include <stdexcept>
 
-Netlist::Netlist(std::vector<Branch*> branches): branchList(std::move(branches)){}
+Netlist::Netlist(std::vector<Node*> nodeList, std::vector<Branch*> branchList, std::vector<Element*> elementList)
+: nodeList(std::move(nodeList)), branchList(std::move(branchList), elementList(std::move(elementList))){}
 
 Netlist::~Netlist() {
     for (Branch* branch : branchList) {
