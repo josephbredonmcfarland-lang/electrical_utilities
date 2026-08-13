@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 Netlist::Netlist(std::vector<Node*> nodeList, std::vector<Branch*> branchList, std::vector<Element*> elementList)
-: nodeList(std::move(nodeList)), branchList(std::move(branchList), elementList(std::move(elementList))){}
+: nodeList(std::move(nodeList)), branchList(std::move(branchList)), elementList(std::move(elementList)){}
 
 Netlist::~Netlist() {
     for (Branch* branch : branchList) {
@@ -19,7 +19,6 @@ Netlist::~Netlist() {
         delete element;
     }
 }
-
 void Netlist::exportList(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -35,28 +34,23 @@ void Netlist::exportList(const std::string& filename) const {
              << "\n";
     }
 }
-
 void Netlist::addNode(Node* node) {
     nodeList.push_back(node);
 }
-
 void Netlist::addBranch(Branch* branch) {
     branchList.push_back(branch);
     branch->getNodeA()->addBranch(branch);
     branch->getNodeB()->addBranch(branch);
 }
-
 void Netlist::addElement(Element* element) {
     elementList.push_back(element);
 }
-
 void Netlist::removeBranch(Branch* branch) {
     branch->getNodeA()->removeBranch(branch);
     branch->getNodeB()->removeBranch(branch);
     branchList.erase(std::remove(branchList.begin(), branchList.end(), branch), branchList.end());
     delete branch;
 }
-
 void Netlist::removeNode(Node* node) {
     if (!node->getBranches().empty()) {
         throw std::runtime_error("Cannot remove node: branches are still attached. Remove those branches first.");

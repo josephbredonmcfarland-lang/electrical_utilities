@@ -45,7 +45,7 @@ target_include_directories(electrical_utilities
 )
 
 # Build the executable from your main file
-add_executable(myapp cpp/Circuit/ExampleFiles/ResistorLadderTest.cpp)
+add_executable(myapp cpp/Circuit/ExampleFiles/VoltageDividerTest.cpp)
 
 # Link the library into the executable
 target_link_libraries(myapp PRIVATE electrical_utilities)
