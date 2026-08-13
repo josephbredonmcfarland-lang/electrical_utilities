@@ -6,10 +6,10 @@
 class Element {
 public:
     // Component and material value
-    std::string id;
+    int id;
     double value;
     // Constructor
-    Element(std::string id, double value);
+    Element(int id, double value);
     // Virtual Destructor
     virtual ~Element() = default;
     // Validate inputs

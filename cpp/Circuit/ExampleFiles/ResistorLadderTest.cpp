@@ -38,7 +38,7 @@ int main() {
         netlist.addBranch(b);
     }
 
-    netlist.exportList("resistor_ladder.txt");
+    netlist.exportList("ResistorLadderTest.txt");
 
     return 0;
 }

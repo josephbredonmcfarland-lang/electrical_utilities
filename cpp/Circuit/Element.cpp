@@ -4,7 +4,7 @@
 #include <utility>
 
 // Base Class: Constructor
-Element::Element(std::string id, double value)
+Element::Element(int id, double value)
     : id(std::move(id)), value(value) {
     validate();
 };

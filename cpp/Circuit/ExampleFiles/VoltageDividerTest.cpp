@@ -5,13 +5,13 @@
 int main() {
     // Building the circuit
     // Nodes
-    auto n0 = new Node(0);
-    auto n1 = new Node(1);
+    auto n0 = new Node(1);
+    auto n1 = new Node(2);
     auto gnd = new ReferenceNode(0);
     // Elements
-    auto V1 = new VoltageSource("V1", 9);
-    auto R1 = new Resistor("R1", 100);
-    auto R2 = new Resistor("R2", 300);
+    auto V1 = new VoltageSource(1, 9);
+    auto R1 = new Resistor(1, 100);
+    auto R2 = new Resistor(2, 300);
     // Branches
     auto b0 = new Branch(0, gnd, n0, V1);
     auto b1 = new Branch(1, n0,n1,R1);
