@@ -33,6 +33,9 @@ add_library(electrical_utilities
         cpp/Circuit/Netlist.h
         cpp/Circuit/ExampleFiles/ResistorLadderTest.cpp
         cpp/Circuit/ExampleFiles/VoltageDividerTest.cpp
+        cpp/Circuit/Solver.cpp
+        cpp/Circuit/Solver.h
+        cpp/Circuit/ExampleFiles/WheatstoneBridgeTest.cpp
 )
 
 
@@ -45,7 +48,7 @@ target_include_directories(electrical_utilities
 )
 
 # Build the executable from your main file
-add_executable(myapp cpp/Circuit/ExampleFiles/VoltageDividerTest.cpp)
+add_executable(myapp cpp/Circuit/ExampleFiles/WheatstoneBridgeTest.cpp)
 
 # Link the library into the executable
 target_link_libraries(myapp PRIVATE electrical_utilities)
