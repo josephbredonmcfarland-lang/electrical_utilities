@@ -30,12 +30,16 @@ int main() {
 
     std::vector<Node*> nodes = {n1, n2, n3, gnd};
     std::vector<Branch*> branches = {b1, b2, b3, b4, b5, b6};
+    std::vector<Element*> elements = {V1, R1, R2, R3, R4, R5 };
 
     for (Node* n : nodes) {
         netlist.addNode(n);
     }
     for (Branch* b : branches) {
         netlist.addBranch(b);
+    }
+    for (Element* e : elements) {
+        netlist.addElement(e);
     }
 
     netlist.exportList("ResistorLadderTest.txt");
