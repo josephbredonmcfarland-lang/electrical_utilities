@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 Netlist::Netlist(std::vector<Node*> nodeList, std::vector<Branch*> branchList, std::vector<Element*> elementList)
-: nodeList(std::move(nodeList)), branchList(std::move(branchList)), elementList(std::move(elementList)){}
+: elementList(std::move(elementList)), branchList(std::move(branchList)), nodeList(std::move(nodeList)){}
 
 Netlist::~Netlist() {
     for (Branch* branch : branchList) {
