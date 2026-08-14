@@ -27,7 +27,7 @@ void Netlist::exportList(const std::string& filename) const {
     for (const Branch* branch : branchList) {
         Node* nodeA = branch->getNodeA();
         Node* nodeB = branch->getNodeB();
-        file << branch->element->getId() << " "
+        file << branch->element->getName() << " "
              << branch->element->getValue() << branch->element->getUnit() << " "
              << (nodeA->isGround() ? "GND" : "N" +std::to_string(nodeA->getId())) << " "
              << (nodeB->isGround() ? "GND" : "N" +std::to_string(nodeB->getId())) << " "

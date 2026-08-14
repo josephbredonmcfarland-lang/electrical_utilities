@@ -18,6 +18,7 @@ public:
     int getId() const;
     double getValue() const;
     virtual std::string getUnit() const= 0;
+    virtual std::string getName() const= 0;
     // Setters
     void setValue(double newValue);
 };
@@ -27,22 +28,26 @@ class Resistor: public Element {
 public:
     Resistor(int id, double value);
     std::string getUnit() const override;
+    std::string getName() const override;
 };
 class Capacitor: public Element {
 public:
     Capacitor(int id, double value);
     std::string getUnit() const override;
+    std::string getName() const override;
 };
 class Inductor: public Element {
 public:
     Inductor(int id, double value);
     std::string getUnit() const override;
+    std::string getName() const override;
 };
 // Ideal Sources
 class VoltageSource: public Element {
 public:
     VoltageSource(int id, double value);
     std::string getUnit() const override;
+    std::string getName() const override;
 };
 
 #endif //ELECTRICAL_UTILITIES_ELEMENT_H
