@@ -39,8 +39,6 @@ void Netlist::addNode(Node* node) {
 }
 void Netlist::addBranch(Branch* branch) {
     branchList.push_back(branch);
-    branch->getNodeA()->addBranch(branch);
-    branch->getNodeB()->addBranch(branch);
 }
 void Netlist::addElement(Element* element) {
     elementList.push_back(element);
